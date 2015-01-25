@@ -1,5 +1,10 @@
 #! /bin/sh
-
+# =====================================
+# Tmux Setup Script
+#
+# Checks and starts a session
+# splits winndow and starts vim.
+# =====================================
 name=$1
 
 tmux start-server
