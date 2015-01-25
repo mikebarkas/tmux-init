@@ -15,9 +15,9 @@ tmux has-session -t ${name}
 
 
 if [ "$?" != "0" ]; then
-  tmux new-session -s ${name} -d "vim" && \
-  tmux split-window -t ${name} && \
-  tmux select-pane -t ${name}:1.1 && \
+  tmux new-session -s ${name} -d -n Vim "vim" && \
+  tmux split-window -t ${name} -p 20 && \
+  tmux select-pane -t ${name}:1.2 && \
   tmux a -t ${name}
 else
   tmux a -t ${name}
