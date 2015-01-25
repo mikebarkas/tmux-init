@@ -1,0 +1,24 @@
+#! /bin/sh
+
+name=$1
+
+tmux start-server
+
+tmux has-session -t ${name}
+
+
+if [ "$?" != "0" ]; then
+  tmux new-session -s ${name} -d "vim" && \
+  tmux split-window -t ${name} && \
+  tmux select-pane -t ${name}:1.1 && \
+  tmux a -t ${name}
+else
+  tmux a -t ${name}
+fi
+
+
+ 
+
+#tmux new-session -s Dev -d && \
+#tmux split-window -t Dev:1 && \
+#tmux send-keys "vim"
