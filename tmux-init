@@ -16,9 +16,3 @@ else
   tmux a -t ${name}
 fi
 
-
- 
-
-#tmux new-session -s Dev -d && \
-#tmux split-window -t Dev:1 && \
-#tmux send-keys "vim"
