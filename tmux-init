@@ -12,12 +12,13 @@ name=$1
 # Set working directory.
 dir="~/Development"
 
-
+# Start tmux server.
 tmux start-server
 
+# Check if session exists.
 tmux has-session -t ${name}
 
-
+# If no session, create one.
 if [ "$?" != "0" ]; then
   tmux new-session -s ${name} -n Vim -d
 
@@ -37,6 +38,7 @@ if [ "$?" != "0" ]; then
   tmux select-pane -U -t${name}
 
   tmux a -t ${name}
+# Attach to existing session.
 else
   tmux a -t ${name}
 fi
