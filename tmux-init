@@ -9,6 +9,10 @@
 # User input for session name.
 name=$1
 
+# Set working directory.
+dir="~/Development"
+
+
 tmux start-server
 
 tmux has-session -t ${name}
@@ -19,14 +23,14 @@ if [ "$?" != "0" ]; then
 
   tmux split-window -p 20 -t ${name}:1.1
 
-  tmux send-keys -t ${name}:1.1 "cd ~/Development" C-m
+  tmux send-keys -t ${name}:1.1 "cd ${dir}" C-m
   tmux send-keys -t ${name}:1.1 "vim" C-m
 
-  tmux send-keys -t ${name}:1.2 "cd ~/Development" C-m
+  tmux send-keys -t ${name}:1.2 "cd ${dir}" C-m
   tmux send-keys -t${name}:1.2 "l" C-m
 
   tmux new-window -n Files -t ${name}
-  tmux send-keys -t ${name}:2 "cd ~/Development" C-m
+  tmux send-keys -t ${name}:2 "cd ${dir}" C-m
   tmux send-keys -t${name}:2 "l" C-m
 
   tmux select-window -t ${name}:1
