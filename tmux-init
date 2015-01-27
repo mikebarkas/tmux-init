@@ -29,8 +29,9 @@ if [ "$?" != "0" ]; then
   tmux send-keys -t ${name}:2 "cd ~/Development" C-m
   tmux send-keys -t${name}:2 "l" C-m
 
+  tmux select-window -t ${name}:1
+  tmux select-pane -U -t${name}
 
-  #tmux select-pane -t ${name}:1.2 && \
   tmux a -t ${name}
 else
   tmux a -t ${name}
