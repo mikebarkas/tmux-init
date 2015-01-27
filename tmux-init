@@ -15,9 +15,22 @@ tmux has-session -t ${name}
 
 
 if [ "$?" != "0" ]; then
-  tmux new-session -s ${name} -d -n Vim "vim" && \
-  tmux split-window -t ${name} -p 20 && \
-  tmux select-pane -t ${name}:1.2 && \
+  tmux new-session -s ${name} -n Vim -d
+
+  tmux split-window -p 20 -t ${name}:1.1
+
+  tmux send-keys -t ${name}:1.1 "cd ~/Development" C-m
+  tmux send-keys -t ${name}:1.1 "vim" C-m
+
+  tmux send-keys -t ${name}:1.2 "cd ~/Development" C-m
+  tmux send-keys -t${name}:1.2 "l" C-m
+
+  tmux new-window -n Files -t ${name}
+  tmux send-keys -t ${name}:2 "cd ~/Development" C-m
+  tmux send-keys -t${name}:2 "l" C-m
+
+
+  #tmux select-pane -t ${name}:1.2 && \
   tmux a -t ${name}
 else
   tmux a -t ${name}
