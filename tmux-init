@@ -34,6 +34,10 @@ if [ "$?" != "0" ]; then
   tmux send-keys -t ${name}:2 "cd ${dir}" C-m
   tmux send-keys -t${name}:2 "l" C-m
 
+  tmux new-window -n SQL -t ${name}
+  tmux send-keys -t ${name}:3 "cd ${dir}" C-m
+  tmux send-keys -t${name}:3 "l" C-m
+
   tmux select-window -t ${name}:1
   tmux select-pane -U -t${name}
 
